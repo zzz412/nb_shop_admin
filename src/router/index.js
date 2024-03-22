@@ -93,6 +93,14 @@ export const asyncRoutes = [
         name: 'GoodsNew',
         component: () => import('@/views/goods/new.vue'),
         meta: { title: '新增商品', icon: 'el-icon-plus' }
+      },
+      {
+        path: '/goods/new/:goodsId',
+        name: 'GoodsEdit',
+        hidden: true,
+        props: true,
+        component: () => import('@/views/goods/new.vue'),
+        meta: { title: '编辑商品', icon: 'el-icon-plus' }
       }
     ]
   },

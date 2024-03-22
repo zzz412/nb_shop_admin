@@ -10,8 +10,8 @@ export const editSwiperApi = (data) => request.put('/carousels', data)
 //* 新增轮播图
 export const addSwiperApi = (data) => request.post('/carousels', data)
 
-//* 批量删除轮播图
-export const delSwiperApi = (data) => request.delete('/carousels', { data })
+//* 批量删除轮播图  [delete请求需要将参数传入到data配置中]
+export const delSwiperApi = (data) => request.delete('/carousels', { data: { ids: data } })
 
 //* 获取单个轮播图
 export const getSwiperApi = (id) => request.get('/carousels/' + id)

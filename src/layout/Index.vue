@@ -19,10 +19,12 @@
             </template>
             <!--  2级菜单 -->
             <!-- 下拉导航菜单内容 -->
-            <el-menu-item v-for="route2 in route.children" :key="route2.path" :index="route2.path">
-              <i :class="route2.meta.icon"></i>
-              {{ route2.meta.title }}
-            </el-menu-item>
+            <template v-for="route2 in route.children">
+              <el-menu-item :key="route2.path" :index="route2.path" v-if="!route2.hidden">
+                <i :class="route2.meta.icon"></i>
+                {{ route2.meta.title }}
+              </el-menu-item>
+            </template>
           </el-submenu>
         </template>
       </el-menu>

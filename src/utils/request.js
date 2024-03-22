@@ -2,6 +2,7 @@
 import Axios from 'axios'
 import store from '@/store'
 import { Message } from 'element-ui'
+import router from '@/router'
 
 // 1. 创建一个axios实例
 const request = Axios.create({
@@ -31,7 +32,10 @@ request.interceptors.response.use(
     if (data.resultCode !== 200) {
       Message.error(data.message)
       // 判断是否为419错误 [token失效、用户未登录   ->   清理token]
-      if (data.resultCode === 419) store.commit('user/resetInfo')
+      if (data.resultCode === 419) {
+        store.commit('user/resetInfo')
+        router.push('/login')
+      }
       return Promise.reject('错误')
     }
     // 将成功结果返回
